@@ -1,0 +1,73 @@
+/*
+ * Design tokens — paleta "Grafite & Nogueira"
+ * ------------------------------------------------------------
+ *  Fundo principal (Grafite Carvão) ........ #161616  → ink
+ *  Cartões e campos (Preto Grafite Suave) .. #222222  → panel
+ *  Destaques e botões (Madeira Nogueira) ... #B37D4E  → walnut
+ *  Destaques e botões (Caramelo Aquecido) .. #C59B6D  → caramel
+ *  Bordas e linhas sutis ................... #333333  → line
+ *  Texto principal (Off-white / Bege) ...... #F0EDE6  → bone
+ *
+ *  Tons de apoio derivados (contraste WCAG AA conferido):
+ *  mute  #A8A196 → 7.1:1 no ink / 6.2:1 no panel (texto secundário)
+ *  faint #8F897F → 5.2:1 no ink / 4.6:1 no panel (texto terciário)
+ *  field #726C63 → 3.5:1 no ink / 3.1:1 no panel (borda de campos, WCAG 1.4.11)
+ *  Botão: texto ink sobre walnut = 5.1:1 (bone sobre walnut daria só 3.0:1).
+ */
+
+@theme {
+  /* Cores */
+  --color-ink: #161616;
+  --color-ink-soft: #1b1b1b;
+  --color-panel: #222222;
+  --color-panel-raised: #2a2a2a;
+  --color-line: #333333;
+  --color-field: #726c63;
+  --color-bone: #f0ede6;
+  --color-mute: #a8a196;
+  --color-faint: #8f897f;
+  --color-walnut: #b37d4e;
+  --color-caramel: #c59b6d;
+  --color-clay: #e0957c;
+  --color-sage: #9db89a;
+
+  /* Tipografia — Cormorant Garamond em todo o site */
+  --font-sans: "Cormorant Garamond Variable", "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-serif: "Cormorant Garamond Variable", "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-display: "Cormorant Garamond Variable", "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+
+  /* Escala tipográfica (Cormorant tem altura-x pequena: base maior) */
+  --text-2xs: 0.8125rem;
+  --text-2xs--line-height: 1.35;
+
+  /* Raios: arquitetura pede cantos discretos */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+
+  /* Movimento */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-fade-in: fade-in 0.45s var(--ease-out-soft) both;
+  --animate-rise-in: rise-in 0.6s var(--ease-out-soft) both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

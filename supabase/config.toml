@@ -1,0 +1,55 @@
+# Configuração do Supabase CLI.
+# Uso SEM Docker (projeto na nuvem): `npx supabase link`, `npx supabase db push`,
+# `npx supabase functions deploy --use-api`, `npx supabase secrets set …` — veja o README.
+# O ambiente local completo (`supabase start`) exige Docker e é opcional.
+
+project_id = "architecture-studio"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[studio]
+enabled = true
+port = 54323
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[auth]
+enabled = true
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173"]
+jwt_expiry = 3600
+# Admins são criados manualmente (painel do Supabase → Authentication → Add user).
+enable_signup = false
+
+[auth.email]
+enable_signup = false
+enable_confirmations = false
+
+[edge_runtime]
+enabled = true
+policy = "per_worker"
+
+# As duas funções são chamadas sem JWT de usuário:
+#  - create-lead: endpoint público do formulário (protegido por validação, honeypot e limites);
+#  - notify-lead: valida por conta própria (JWT de admin OU cabeçalho x-notify-secret).
+# Dependências de cada função ficam no deno.json da própria pasta.
+[functions.create-lead]
+verify_jwt = false
+
+[functions.notify-lead]
+verify_jwt = false

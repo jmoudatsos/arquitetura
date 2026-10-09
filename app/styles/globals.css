@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./typography.css";
+
+/* As fontes são importadas no root.jsx (pacote @fontsource, servidas localmente). */
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+  }
+
+  body {
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--color-walnut);
+    color: var(--color-ink);
+  }
+
+  /* Foco sempre visível e na cor de destaque */
+  :focus-visible {
+    outline: 2px solid var(--color-caramel);
+    outline-offset: 3px;
+  }
+
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline-offset: 0;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  img {
+    color: transparent; /* esconde o texto alternativo enquanto carrega */
+  }
+
+  /* Campos nativos herdam a fonte do site */
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    letter-spacing: inherit;
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%23C59B6D' stroke-width='1.5' d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.5rem;
+  }
+
+  select option {
+    background: var(--color-panel);
+    color: var(--color-bone);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-faint);
+    opacity: 1;
+  }
+
+  /* Autofill do Chrome sem fundo amarelo/azul */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--color-bone);
+    -webkit-box-shadow: 0 0 0 1000px var(--color-ink) inset;
+    caret-color: var(--color-bone);
+    transition: background-color 9999s ease-out;
+  }
+
+  /* Barra de rolagem discreta */
+  * {
+    scrollbar-color: #3a3a3a transparent;
+    scrollbar-width: thin;
+  }
+
+  hr {
+    border-color: var(--color-line);
+  }
+}
+
+@layer components {
+  /* Linha fina com acento de madeira — usada em divisores de seção */
+  .rule-walnut {
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-walnut) 0 3rem, var(--color-line) 3rem 100%);
+  }
+
+  /* Chevron do stepper do mockup ("STEP 1 · SPACE" > "STEP 2" > "STEP 3") */
+  .chevron-step {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%);
+  }
+
+  .chevron-step:first-child {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+  }
+
+  /* Imagem com leve aquecimento para harmonizar com a paleta */
+  .img-warm {
+    filter: saturate(0.92) contrast(1.03) sepia(0.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

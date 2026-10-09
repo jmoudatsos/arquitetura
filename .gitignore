@@ -1,0 +1,31 @@
+# dependências
+node_modules/
+
+# build do React Router
+build/
+.react-router/
+
+# ambiente
+.env
+.env.*
+!.env.example
+
+# testes
+coverage/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# supabase local
+supabase/.branches/
+supabase/.temp/
+supabase/functions/.env
+
+# sistema / editores
+.DS_Store
+Thumbs.db
+*.log
+.vscode/*
+!.vscode/extensions.json
+.idea/

@@ -1,0 +1,9 @@
+{
+  "name": "W Studio",
+  "short_name": "W Studio",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
+  "theme_color": "#161616",
+  "background_color": "#161616",
+  "display": "standalone",
+  "lang": "pt-BR"
+}

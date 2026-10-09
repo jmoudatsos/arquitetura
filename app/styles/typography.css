@@ -1,0 +1,122 @@
+/*
+ * Tipografia — Cormorant Garamond
+ * A fonte tem altura-x pequena, então o corpo de texto parte de 18px
+ * e rótulos em caixa-alta nunca ficam abaixo de 13px.
+ */
+
+@layer base {
+  html {
+    font-size: 100%;
+    font-family: var(--font-sans);
+    font-feature-settings: "kern", "liga", "lnum";
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    font-weight: 450;
+    letter-spacing: 0.005em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Números de telefone, valores e tabelas alinham melhor com algarismos tabulares */
+  .tabular {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+}
+
+/* Sobretítulo em caixa-alta espaçada (como "STEP 1 · SPACE" no mockup) */
+@utility eyebrow {
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Rótulo de campo de formulário */
+@utility label-caps {
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Título display em caixa-alta, peso leve (hero do mockup) */
+@utility display-caps {
+  font-family: var(--font-display);
+  font-weight: 350;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.04;
+}
+
+/* Texto corrido longo (descrição de projetos, política de privacidade) */
+@utility prose-studio {
+  color: var(--color-mute);
+  font-size: 1.1875rem;
+  line-height: 1.75;
+
+  & > * + * {
+    margin-top: 1.1em;
+  }
+
+  & h2 {
+    color: var(--color-bone);
+    font-size: 1.75rem;
+    margin-top: 2em;
+  }
+
+  & h3 {
+    color: var(--color-bone);
+    font-size: 1.375rem;
+    margin-top: 1.6em;
+  }
+
+  & strong {
+    color: var(--color-bone);
+    font-weight: 600;
+  }
+
+  & a {
+    color: var(--color-caramel);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  & ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  & ul > li {
+    position: relative;
+    padding-left: 1.4em;
+  }
+
+  & ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.85em;
+    width: 0.6em;
+    height: 1px;
+    background: var(--color-walnut);
+  }
+}
