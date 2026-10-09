@@ -6,6 +6,7 @@ import { defineConfig } from "vite";
 const isVitest = Boolean(process.env.VITEST);
 
 export default defineConfig({
+  base: "/arquitetura/",
   plugins: [
     tailwindcss(),
     // O plugin do React Router não deve rodar dentro do Vitest
@@ -29,7 +30,10 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: ["./tests/setup.js"],
-    include: ["tests/unit/**/*.test.{js,jsx}", "tests/integration/**/*.test.{js,jsx}"],
+    include: [
+      "tests/unit/**/*.test.{js,jsx}",
+      "tests/integration/**/*.test.{js,jsx}",
+    ],
     restoreMocks: true,
     testTimeout: 30_000,
   },

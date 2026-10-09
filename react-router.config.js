@@ -4,5 +4,6 @@ export default {
   buildDirectory: "build",
   // SSR ligado: páginas públicas chegam prontas para SEO e o painel admin
   // valida a sessão no servidor antes de renderizar qualquer dado.
-  ssr: true,
+  basename: "/arquitetura/",
+  ssr: false,
 };
